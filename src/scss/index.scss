@@ -1,0 +1,60 @@
+body {
+  margin: 20px;
+
+  * {
+    border-radius: 10px;
+  }
+
+  button#newQuote {
+    background-color: beige;
+    border: none;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  figure {
+    visibility: hidden;
+    margin: 10px;
+    padding: 10px;
+
+    background-color: darken(white, 10%);
+
+    * {
+      margin: 0
+    }
+
+    blockquote {
+      margin: 0;
+
+      p {
+        font-size: 3rem;
+        line-height: 6rem;
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+    }
+
+    figcaption {
+      font-size: 2.5rem;
+      line-height: 4rem;
+      margin-left: 30px;
+    }
+
+  }
+}
+
+@media screen and (min-width: 30rem) {
+  body {
+    button#newQuote {
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten(beige, 2%);
+      }
+    }
+  }
+}

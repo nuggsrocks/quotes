@@ -2,8 +2,6 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import '../scss/index.scss';
 
-const rootDiv = document.querySelector('div#root');
-
 class Quote {
 
 	static displayQuote(quote, author) {

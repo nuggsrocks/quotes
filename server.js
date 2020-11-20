@@ -9,4 +9,4 @@ app.get('/*', (req, res) => {
 	res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(port, () => console.log('************'));
+app.listen(port, () => console.log('node server is running http://localhost:8080'));

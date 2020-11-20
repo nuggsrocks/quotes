@@ -30,7 +30,9 @@ const getRandomColor = () => {
 		return Math.round(Math.random() * (255 - 100) + 100);
 	};
 
-	return `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
+	let color = `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
+	document.documentElement.style.setProperty('--color', color);
+	return color;
 };
 
 

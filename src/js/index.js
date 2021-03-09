@@ -1,44 +1,43 @@
-import '../scss/index.scss';
+const displayQuote = (quote, author) => {
+	let figure = document.querySelector('main figure');
 
-class Quote {
+	figure.style.visibility = 'hidden';
 
-	static displayQuote(quote, author) {
-		let figure = document.querySelector('main figure');
+	let blockquote = figure.querySelector('blockquote');
 
-		figure.style.visibility = 'hidden';
+	blockquote.style.backgroundColor = getRandomColor();
 
-		let blockquote = figure.querySelector('blockquote');
+	blockquote.removeChild(blockquote.childNodes[0]);
 
-		blockquote.style.backgroundColor = getRandomColor();
+	blockquote.append(quote);
 
-		blockquote.innerHTML = `<p>${quote}</p>`;
+	let figcaption = figure.querySelector('figcaption');
 
-		figure.querySelector('figcaption').innerHTML = `- ${author}`;
+	figcaption.removeChild(figcaption.childNodes[0])
 
-		figure.style.visibility = 'visible';
-	}
+	figcaption.append(`- ${author}`);
+
+	figure.style.visibility = 'visible';
 }
 
 
 
 const getRandomColor = () => {
-	const getRandomNumber = () => {
+	const getRandomRgbValue = () => {
 		return Math.round(Math.random() * (255 - 100) + 100);
 	};
 
-	let color = `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
-	document.documentElement.style.setProperty('--color', color);
-	return color;
+	return `rgb(${getRandomRgbValue()},${getRandomRgbValue()},${getRandomRgbValue()})`;
 };
 
 
 const fetchNewQuote = () => {
 	fetch('https://api.quotable.io/random')
 		.then(res => res.json())
-		.then(data => Quote.displayQuote(data['content'], data['author']))
+		.then(data => displayQuote(data['content'], data['author']))
 		.catch(e => console.error(e));
 };
 
 fetchNewQuote();
 
-document.querySelector('button#newQuote').onclick = () => fetchNewQuote();
+document.querySelector('button#newQuote').onclick = fetchNewQuote;

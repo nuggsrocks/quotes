@@ -1,0 +1,81 @@
+body {
+  margin: 20px;
+}
+
+body * {
+  border-radius: 10px;
+}
+
+button#newQuote {
+  background-color: rgb(231, 220, 200);
+  border: none;
+  margin-left: 10px;
+  font-family: sans-serif;
+  padding: 15px;
+  cursor: pointer;
+}
+
+button#newQuote:focus {
+  outline: none;
+  border: black 1px solid;
+}
+
+
+figure {
+  visibility: hidden;
+  margin: 10px;
+  padding: 10px;
+
+  background-color: rgb(231, 231, 231);
+
+}
+
+figure * {
+  margin: 0
+}
+
+figure blockquote {
+  font-size: 3rem;
+  line-height: 6rem;
+  font-family: sans-serif;
+  padding: 40px;
+
+}
+
+figcaption {
+  font-size: 2rem;
+  line-height: 8rem;
+  margin-left: 40px;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  button#newQuote {
+    width: calc(100vw - 60px);
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  blockquote {
+    font-size: 1.75rem;
+    line-height: 3.5rem;
+  }
+
+  figcaption {
+    font-size: 1.25rem;
+    line-height: 4rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  blockquote {
+    font-size: 3rem;
+    line-height: 6rem;
+  }
+
+  figcaption {
+    font-size: 2.5rem;
+    line-height: 8rem;
+  }
+}

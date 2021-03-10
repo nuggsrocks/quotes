@@ -15,11 +15,16 @@ let server = http.createServer((req, res) => {
 	} else {
 		filePath = 'src' + req.url;
 
-		if (path.extname(filePath) === '.js') {
-			contentType = 'text/javascript';
-		}
-		if (path.extname(filePath) === '.css') {
-			contentType = 'text/css';
+		switch(path.extname(filePath)) {
+			case '.js':
+				contentType = 'text/javascript';
+				break;
+			case '.css':
+				contentType = 'text/css';
+				break;
+			case '.ico':
+				contentType = 'image/x-icon';
+				break;
 		}
 	}
 

@@ -4,7 +4,7 @@
   "description": "quote fetching machine",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon -w server.js server.js"
   },
   "repository": {
     "type": "git",

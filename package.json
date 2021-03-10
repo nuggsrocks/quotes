@@ -4,7 +4,8 @@
   "description": "quote fetching machine",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon -w server.js server.js"
+    "start:dev": "nodemon -w server.js server.js",
+    "start:test": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nuggsrocks/quotes/issues"
   },
-  "homepage": "https://github.com/nuggsrocks/quotes#readme"
+  "homepage": "https://github.com/nuggsrocks/quotes#readme",
+  "devDependencies": {
+    "pm2": "^4.5.5"
+  }
 }

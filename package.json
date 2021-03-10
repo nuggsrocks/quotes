@@ -1,0 +1,19 @@
+{
+  "name": "quotes",
+  "version": "1.0.0",
+  "description": "quote fetching machine",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuggsrocks/quotes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nuggsrocks/quotes/issues"
+  },
+  "homepage": "https://github.com/nuggsrocks/quotes#readme"
+}

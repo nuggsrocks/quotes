@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "nodemon -w server.js server.js",
-    "start:test": "node server.js"
+    "start:test": "pm2 start ecosystem.config.js"
   },
   "repository": {
     "type": "git",

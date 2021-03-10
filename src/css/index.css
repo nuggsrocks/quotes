@@ -51,24 +51,3 @@ figcaption {
   margin-left: 40px;
 }
 
-
-@media screen and (max-width: 1000px) {
-
-  button#newQuote {
-    width: calc(100vw - 60px);
-  }
-}
-
-@media screen and (max-width: 300px) {
-
-
-  blockquote {
-    font-size: 3rem;
-    line-height: 6rem;
-  }
-
-  figcaption {
-    font-size: 2.5rem;
-    line-height: 8rem;
-  }
-}

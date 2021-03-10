@@ -1,2 +1,3 @@
 ecosystem.*
 .idea/**
+node_modules/**

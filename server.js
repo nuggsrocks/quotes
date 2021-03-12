@@ -7,14 +7,13 @@ const PORT = process.env.PORT || 3010;
 const HOST = process.env.HOST || 'localhost';
 
 let server = http.createServer((req, res) => {
-	let requestPath = req.url.replace('/quotes', '');
 	let filePath, contentType;
 
-	if (requestPath === '/') {
+	if (req.url === '/') {
 		filePath = 'src/index.html';
 		contentType = 'text/html';
 	} else {
-		filePath = 'src' + requestPath;
+		filePath = 'src' + req.url;
 
 		switch(path.extname(filePath)) {
 			case '.js':
@@ -30,7 +29,6 @@ let server = http.createServer((req, res) => {
 	}
 
 	fs.readFile(filePath, (error, data) => {
-		if (error) console.log(error);
 		res.writeHead(200, {'Content-Type': contentType});
 		res.write(data);
 		return res.end();

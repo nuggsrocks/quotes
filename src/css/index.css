@@ -1,3 +1,7 @@
+html {
+  font-size: 60%;
+}
+
 body {
   margin: 1rem;
 }
@@ -6,7 +10,12 @@ body * {
   border-radius: 10px;
 }
 
+main > div {
+  margin: 1rem;
+}
+
 button#newQuote {
+  width: 100%;
   background-color: rgb(231, 220, 200);
   border: none;
   margin-left: 1rem;
@@ -15,6 +24,7 @@ button#newQuote {
   font-family: sans-serif;
   padding: 1rem;
   cursor: pointer;
+
 }
 
 button#newQuote:focus {
@@ -27,7 +37,6 @@ figure {
   visibility: hidden;
   margin: 1rem;
   padding: 1rem;
-
   background-color: rgb(231, 231, 231);
 
 }
@@ -37,8 +46,8 @@ figure * {
 }
 
 figure blockquote {
-  font-size: 3rem;
-  line-height: 6rem;
+  font-size: 8rem;
+  line-height: 16rem;
   font-family: sans-serif;
   padding: 2rem;
 
@@ -49,6 +58,7 @@ figcaption {
   font-size: 2rem;
   line-height: 8rem;
   margin-left: 2rem;
+
 }
 
 @media screen and (max-width: 62rem) {

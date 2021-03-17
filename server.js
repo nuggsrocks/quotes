@@ -1,40 +1,13 @@
-const http = require('http');
-const fs = require('fs');
-const {URL} = require('url');
-const path = require('path');
+const express = require('express');
+const app = express();
 
 const PORT = process.env.PORT || 3010;
-const HOST = process.env.HOST || 'localhost';
+const HOST = process.env.HOST || '127.0.0.1';
 
-let server = http.createServer((req, res) => {
-	let filePath, contentType;
+app.use(express.static(__dirname + '/src'));
 
-	if (req.url === '/') {
-		filePath = 'src/index.html';
-		contentType = 'text/html';
-	} else {
-		filePath = 'src' + req.url;
-
-		switch(path.extname(filePath)) {
-			case '.js':
-				contentType = 'text/javascript';
-				break;
-			case '.css':
-				contentType = 'text/css';
-				break;
-			case '.ico':
-				contentType = 'image/x-icon';
-				break;
-		}
-	}
-
-	fs.readFile(filePath, (error, data) => {
-		res.writeHead(200, {'Content-Type': contentType});
-		res.write(data);
-		return res.end();
-	});
-
-
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/src/index.html');
 });
 
-server.listen(PORT, HOST);
+app.listen(PORT, HOST, () => console.log('node server is running..'));

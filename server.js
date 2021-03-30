@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const fs = require('fs');
+const https = require('https');
 const favicon = require('serve-favicon');
 
 const PORT = process.env.PORT || 3010;
@@ -19,4 +21,17 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/src/index.html');
 });
 
-app.listen(PORT, HOST, () => console.log('node server is running..'));
+if (process.env.KEY && process.env.CERT) {
+	try {
+		const key = fs.readFileSync(process.env.KEY);
+		const cert = fs.readFileSync(process.env.CERT);
+		console.log('https credentials loaded');
+
+		let server = https.createServer({key, cert}, app);
+
+
+		server.listen(PORT, HOST, () => console.log('node server is running..'));
+	} catch (error) {
+		console.warn(error);
+	}
+}

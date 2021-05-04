@@ -33,6 +33,8 @@
   "eslintConfig": {
     "extends": ["eslint:recommended", "google"],
     "env": {
+      "mocha": true,
+      "browser": true,
       "node" : true
     },
     "parserOptions": {

@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3010;
 const HOST = process.env.HOST || '127.0.0.1';
 
 app.use((req, res, next) => {
-	console.log(req.url);
-	next();
+  console.log(req.url);
+  next();
 });
 
 app.use(favicon(path.join(__dirname, 'src', 'favicon.ico')));
@@ -18,20 +18,20 @@ app.use(favicon(path.join(__dirname, 'src', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/src/index.html');
+  res.sendFile(__dirname + '/src/index.html');
 });
 
 if (process.env.KEY && process.env.CERT) {
-	try {
-		const key = fs.readFileSync(process.env.KEY);
-		const cert = fs.readFileSync(process.env.CERT);
-		console.log('https credentials loaded');
+  try {
+    const key = fs.readFileSync(process.env.KEY);
+    const cert = fs.readFileSync(process.env.CERT);
+    console.log('https credentials loaded');
 
-		let server = https.createServer({key, cert}, app);
+    const server = https.createServer({key, cert}, app);
 
 
-		server.listen(PORT, HOST, () => console.log('node server is running..'));
-	} catch (error) {
-		console.warn(error);
-	}
+    server.listen(PORT, HOST, () => console.log('node server is running..'));
+  } catch (error) {
+    console.warn(error);
+  }
 }

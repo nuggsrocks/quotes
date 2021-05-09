@@ -2,61 +2,20 @@
   "name": "quotes",
   "version": "1.0.0",
   "description": "quote fetching machine",
-  "main": "server.js",
+  "main": "server/src/server.js",
   "scripts": {
-    "start:dev": "pm2 start ecosystem.config.js;pm2 logs",
-    "stop:dev": "pm2 delete quotes",
-    "lint": "eslint .",
-    "lint-fix": "npm run lint -- --fix",
-    "pretest": "npm run lint",
-    "test": "nyc mocha ./test"
+    "test:client": "cd client && npm run test",
+    "build:client": "cd client && npm run build",
+    "server:dev": "cd server && npm run start:dev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nuggsrocks/quotes.git"
   },
-  "author": "",
+  "author": "nuggsrocks <nuggsrocks@yahoo.com> (https://github.com/nuggsrocks/)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nuggsrocks/quotes/issues"
   },
-  "homepage": "https://github.com/nuggsrocks/quotes#readme",
-  "devDependencies": {
-    "chai": "^4.3.4",
-    "eslint": "^7.25.0",
-    "eslint-config-google": "^0.14.0",
-    "mocha": "^8.3.2",
-    "nyc": "^15.1.0",
-    "pm2": "^4.5.6",
-    "sinon": "^10.0.0"
-  },
-  "eslintConfig": {
-    "extends": ["eslint:recommended", "google"],
-    "env": {
-      "mocha": true,
-      "browser": true,
-      "node" : true
-    },
-    "parserOptions": {
-      "ecmaVersion": 6
-    },
-    "rules" : {
-      "max-len": [
-        2,
-        120,
-        4,
-        {
-          "ignoreUrls": true
-        }
-      ],
-      "no-console": 0
-    }
-  },
-  "eslintIgnore": [
-    "node_modules"
-  ],
-  "dependencies": {
-    "express": "^4.17.1",
-    "serve-favicon": "^2.5.0"
-  }
+  "homepage": "https://github.com/nuggsrocks/quotes#readme"
 }

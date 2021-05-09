@@ -1,5 +1,5 @@
-ecosystem.*
 .idea/**
-node_modules/**
-
-.nyc_output/**
+**/node_modules/**
+server/.env
+**/coverage/**
+**/dist/**

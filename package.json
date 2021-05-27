@@ -1,21 +1,38 @@
 {
-  "name": "quotes",
+  "name": "quotes-client",
   "version": "1.0.0",
-  "description": "quote fetching machine",
-  "main": "server/src/server.js",
-  "scripts": {
-    "test:client": "cd client && npm run test",
-    "build:client": "cd client && npm run build",
-    "server:dev": "cd server && npm run start:dev"
+  "description": "quotes app client side",
+  "main": "src/js/index.js",
+  "directories": {
+    "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nuggsrocks/quotes.git"
+  "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "lint:fix": "eslint . --fix",
+    "test": "jest"
   },
   "author": "nuggsrocks <nuggsrocks@yahoo.com> (https://github.com/nuggsrocks/)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nuggsrocks/quotes/issues"
-  },
-  "homepage": "https://github.com/nuggsrocks/quotes#readme"
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.13.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  }
 }

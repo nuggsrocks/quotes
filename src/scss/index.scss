@@ -1,0 +1,48 @@
+body {
+  margin: 1rem;
+}
+
+body * {
+  border-radius: 10px;
+}
+
+button#newQuote {
+  width: calc(100% - 2rem);
+  background-color: rgb(231, 220, 200);
+  border: none;
+  margin-left: 1rem;
+  font-size: 2rem;
+  line-height: 4rem;
+  font-family: serif;
+  padding: 1rem;
+  cursor: pointer;
+
+}
+
+button#newQuote:focus {
+  outline: none;
+  border: black 1px solid;
+}
+
+
+figure {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgb(231, 231, 231);
+
+  blockquote {
+    font-size: 4rem;
+    line-height: 8rem;
+    font-family: sans-serif;
+    padding: 2rem;
+    margin: 0;
+  }
+
+  figcaption {
+    font-family: serif;
+    font-size: 2rem;
+    line-height: 8rem;
+    margin-left: 2rem;
+  }
+
+}

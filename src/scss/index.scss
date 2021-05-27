@@ -46,3 +46,9 @@ figure {
   }
 
 }
+
+div.loading {
+  &::after {
+    content: 'loading';
+  }
+}

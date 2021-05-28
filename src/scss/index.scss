@@ -47,8 +47,23 @@ figure {
 
 }
 
+#root {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 div.loading {
-  &::after {
-    content: 'loading';
-  }
+  margin: 1rem;
+  height: 10vw;
+  width: 10vw;
+  border-radius: 50%;
+  background-color: rgb(100, 100, 100);
+  display: inline-block;
+}
+
+
+@keyframes fadein {
+  0% {opacity: 0}
+  100% {opacity: 1}
 }

@@ -5,6 +5,6 @@ describe('constructLoadingIcon()', () => {
     const div = constructLoadingIcon()
 
     expect(div).toBeInstanceOf(HTMLElement)
-    expect(div.className).toEqual('loading')
+    expect(div.classList).toContain('loading')
   })
 })

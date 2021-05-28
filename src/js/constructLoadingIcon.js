@@ -1,7 +1,7 @@
 export const constructLoadingIcon = () => {
   const div = document.createElement('div')
 
-  div.className = 'loading'
+  div.classList.add('loading')
 
   return div
 }

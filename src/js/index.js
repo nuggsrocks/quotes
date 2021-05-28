@@ -6,28 +6,46 @@ import 'core-js/stable'
 import { fetchNewQuote } from './fetchNewQuote'
 
 import { constructQuote } from './constructQuote'
-import { constructAlert } from './constructAlert'
 import { constructLoadingIcon } from './constructLoadingIcon'
+import { animate } from './animate'
 
 const root = document.querySelector('#root')
 
 const loadingIcon = constructLoadingIcon()
 
-const init = () => {
-  root.innerHTML = ''
-  root.append(loadingIcon)
+const state = {
+  quote: null,
+  error: null
+}
 
-  fetchNewQuote()
-    .then((data) => {
-      root.innerHTML = ''
-      root.append(constructQuote(data))
+const init = () => {
+  fetchNewQuote().then(data => {
+    state.quote = constructQuote(data)
+  })
+
+  const callback = () => {
+    animate.fadeIn(root, loadingIcon).then(() => {
+      animate.fadeOut(loadingIcon).then(() => {
+        if (state.quote !== null) {
+          animate.fadeIn(root, state.quote)
+          return
+        }
+
+        console.log('callback called')
+        callback()
+      })
     })
-    .catch(error => {
-      root.innerHTML = ''
-      root.append(constructAlert(error))
-    })
+  }
+
+  callback()
 }
 
 init()
 
-document.querySelector('#newQuote').onclick = init
+document.querySelector('#newQuote').onclick = () => {
+  animate.fadeOut(state.quote).then(() => {
+    state.quote = null
+    init()
+  })
+  state.quote = null
+}

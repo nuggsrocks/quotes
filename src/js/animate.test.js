@@ -1,34 +1,33 @@
 import { animate } from './animate'
 
 describe('animate', () => {
-  beforeEach(() => {
-    document.body.innerHTML = ''
-  })
-  describe('fadeIn()', () => {
-    it('should fade given element in to root element', async () => {
-      window.setTimeout = jest.fn((callback) => callback())
+  describe('fade()', () => {
+    it('should call setTimeout', async () => {
+      jest.spyOn(window, 'setTimeout')
 
       const element = document.createElement('div')
 
-      await animate.fadeIn(document.body, element)
+      await animate.fade('in', element, 50)
 
-      expect(document.body.childNodes).toContain(element)
+      expect(setTimeout).toHaveBeenCalled()
+    })
+  })
+  describe('fadeIn()', () => {
+    it('should fade given element in', async () => {
+      const element = document.createElement('div')
+
+      await animate.fadeIn(element, 10)
+
       expect(element.style.getPropertyValue('opacity')).toEqual('1')
-      expect(window.setTimeout).toHaveBeenCalled()
     })
   })
   describe('fadeOut()', () => {
-    it('should fade given element out and remove it from dom', async () => {
-      window.setTimeout = jest.fn((callback) => callback())
-
+    it('should fade out given element', async () => {
       const element = document.createElement('div')
-      document.body.append(element)
 
-      await animate.fadeOut(element)
+      await animate.fadeOut(element, 10)
 
-      expect(document.body.childNodes.length).toEqual(0)
       expect(element.style.getPropertyValue('opacity')).toEqual('0')
-      expect(window.setTimeout).toHaveBeenCalled()
     })
   })
 })

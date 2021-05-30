@@ -1,47 +1,40 @@
-export const animate = {
-  fadeIn: (root, element) => {
-    element.style.setProperty('opacity', '0')
 
-    root.append(element)
+const fade = (type, element, time) => {
+  const opacityDelta = 1 / time * 1000 / 60
 
-    return new Promise(resolve => {
-      const increment = () => {
-        const opacity = element.style.getPropertyValue('opacity')
+  return new Promise(resolve => {
+    const increment = () => {
+      const opacity = element.style.getPropertyValue('opacity')
 
-        const nextOpacity = Number(opacity) + 0.05
+      let nextOpacity
 
-        if (nextOpacity >= 1) {
+      if (type === 'in') {
+        nextOpacity = Number(opacity) + opacityDelta
+
+        if (nextOpacity > 1) {
           element.style.setProperty('opacity', '1')
-          return resolve()
+          return resolve(nextOpacity)
         }
-        element.style.setProperty('opacity', nextOpacity.toString())
-
-        window.setTimeout(increment, 25)
       }
-
-      increment()
-    })
-  },
-  fadeOut: (element) => {
-    element.style.setProperty('opacity', '1')
-
-    return new Promise(resolve => {
-      const increment = () => {
-        const opacity = element.style.getPropertyValue('opacity')
-
-        const nextOpacity = Number(opacity) - 0.05
-
-        if (nextOpacity <= 0) {
+      if (type === 'out') {
+        nextOpacity = Number(opacity) - opacityDelta
+        if (nextOpacity < 0) {
           element.style.setProperty('opacity', '0')
-          element.remove()
           return resolve()
         }
-        element.style.setProperty('opacity', nextOpacity.toString())
-
-        window.setTimeout(increment, 25)
       }
+      element.style.setProperty('opacity', nextOpacity.toString())
 
-      increment()
-    })
-  }
+      setTimeout(increment, 1000 / 60)
+    }
+
+    increment()
+  })
+
+}
+
+export const animate = {
+  fade,
+  fadeIn: (element, time) => fade('in', element, time),
+  fadeOut: (element, time) => fade('out', element, time)
 }

@@ -8,7 +8,7 @@ import { fetchNewQuote } from './fetchNewQuote'
 import { constructQuote } from './constructQuote'
 import { constructLoadingIcon } from './constructLoadingIcon'
 import { animate } from './animate'
-import {getRandomColor} from './getRandomColor';
+import { getRandomColor } from './getRandomColor'
 
 const root = document.querySelector('#root')
 
@@ -22,7 +22,6 @@ const state = {
 const transitionTime = 400
 
 const waitForFetch = () => {
-
   loadingIcon.style.setProperty('opacity', '0')
 
   root.append(loadingIcon)
@@ -43,8 +42,6 @@ const waitForFetch = () => {
       waitForFetch()
     })
   })
-
-
 }
 
 const init = () => {

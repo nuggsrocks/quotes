@@ -30,7 +30,6 @@ const fade = (type, element, time) => {
 
     increment()
   })
-
 }
 
 export const animate = {

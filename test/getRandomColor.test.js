@@ -1,4 +1,4 @@
-import { getRandomColor } from './getRandomColor'
+import { getRandomColor } from '../src/js/getRandomColor'
 
 describe('getRandomColor()', () => {
   test('should return valid rgb string format', () => {
@@ -11,6 +11,9 @@ describe('getRandomColor()', () => {
 
     const colorValues = rgbString.match(/\d{1,3}/g)
 
-    expect(colorValues.filter((value) => Number(value) > 255 || Number(value) < 0)).toStrictEqual([])
+    for (const value of colorValues) {
+      expect(Number(value)).toBeLessThan(255)
+      expect(Number(value)).toBeGreaterThan(0)
+    }
   })
 })

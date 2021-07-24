@@ -1,4 +1,4 @@
-import { constructAlert } from './constructAlert'
+import { constructAlert } from '../src/js/constructAlert'
 
 describe('constructAlert()', () => {
   it('should construct alert message element from error object', () => {
@@ -6,7 +6,6 @@ describe('constructAlert()', () => {
 
     const alertElement = constructAlert(error)
 
-    expect(alertElement).toBeInstanceOf(HTMLElement)
-    expect(alertElement.textContent).toEqual(error.message)
+    expect(alertElement.textContent).toMatch(error.message)
   })
 })

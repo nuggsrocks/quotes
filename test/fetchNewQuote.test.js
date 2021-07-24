@@ -1,4 +1,4 @@
-import { fetchNewQuote } from './fetchNewQuote'
+import { fetchNewQuote } from '../src/js/fetchNewQuote'
 
 describe('fetchNewQuote()', () => {
   afterEach(() => {

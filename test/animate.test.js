@@ -1,4 +1,4 @@
-import { animate } from './animate'
+import { animate } from '../src/js/animate'
 
 describe('animate', () => {
   describe('fade()', () => {

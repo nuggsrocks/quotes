@@ -1,5 +1,6 @@
 body {
   margin: 1rem;
+  background-color: rgb(50, 50, 50);
 }
 
 body * {
@@ -16,12 +17,20 @@ button#newQuote {
   font-family: serif;
   padding: 1rem;
   cursor: pointer;
+  transition: background-color 200ms;
 
-}
 
-button#newQuote:focus {
-  outline: none;
-  border: black 1px solid;
+  &:hover {
+    background-color: rgb(200, 190, 170);
+  }
+
+  &:focus {
+    border: blue 2px solid;
+  }
+
+  &:active {
+    background-color: rgb(150, 140, 120);
+  }
 }
 
 
@@ -29,18 +38,17 @@ figure {
   width: calc(100% - 2rem);
   margin: 1rem;
   padding: 1rem;
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(200, 200, 200);
 
   blockquote {
-    font-size: 4rem;
-    line-height: 8rem;
+    font-size: 3rem;
+    line-height: 6rem;
     font-family: sans-serif;
     padding: 2rem;
     margin: 0;
   }
 
   figcaption {
-    font-family: serif;
     font-size: 2rem;
     line-height: 8rem;
     margin-left: 2rem;

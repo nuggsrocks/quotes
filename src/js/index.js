@@ -7,12 +7,15 @@ import { fetchNewQuote } from './fetchNewQuote'
 
 import { constructQuote } from './constructQuote'
 import { constructLoadingIcon } from './constructLoadingIcon'
-import { animate } from './animate'
 import { getRandomColor } from './getRandomColor'
-
+import animate from 'animate'
 const root = document.querySelector('#root')
 
 const loadingIcon = constructLoadingIcon()
+
+loadingIcon.style.setProperty('opacity', '0')
+
+root.append(loadingIcon)
 
 const state = {
   quote: null,
@@ -21,27 +24,28 @@ const state = {
 
 const transitionTime = 400
 
-const waitForFetch = () => {
-  loadingIcon.style.setProperty('opacity', '0')
+const newQuoteBtn = document.querySelector('button#newQuote')
 
-  root.append(loadingIcon)
+const waitForFetch = () => {
 
   loadingIcon.style.setProperty('background-color', getRandomColor())
 
-  animate.fadeIn(loadingIcon, transitionTime).then(() => {
-    animate.fadeOut(loadingIcon, transitionTime).then(() => {
-      if (state.quote !== null) {
-        loadingIcon.remove()
-        root.append(state.quote)
-        animate.fadeIn(state.quote, transitionTime).then(() => {
-        })
+  animate.fadeIn(loadingIcon, transitionTime)
 
-        return
-      }
+  setTimeout(() => animate.fadeOut(loadingIcon, transitionTime), transitionTime)
 
+  setTimeout(() => {
+    if (state.quote === null) {
       waitForFetch()
-    })
-  })
+    } else {
+      loadingIcon.remove()
+      root.append(state.quote)
+      animate.fadeIn(state.quote, transitionTime)
+      setTimeout(() => {
+        newQuoteBtn.onclick = refresh
+      })
+    }
+  }, transitionTime * 2)
 }
 
 const init = () => {
@@ -54,10 +58,20 @@ const init = () => {
 
 init()
 
-document.querySelector('#newQuote').onclick = () => {
-  animate.fadeOut(state.quote, transitionTime).then(() => {
+const refresh = () => {
+  console.log('click')
+
+  newQuoteBtn.onclick = null
+
+  animate.fadeOut(state.quote, transitionTime)
+
+  setTimeout(() => {
     state.quote.remove()
+
     state.quote = null
+
+    root.append(loadingIcon)
+
     init()
-  })
+  }, transitionTime)
 }

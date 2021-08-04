@@ -1,5 +1,4 @@
-.idea/**
-**/node_modules/**
-server/.env
-**/coverage/**
-**/dist/**
+.idea/
+node_modules/
+coverage/
+dist/

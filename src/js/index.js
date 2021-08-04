@@ -27,7 +27,6 @@ const transitionTime = 400
 const newQuoteBtn = document.querySelector('button#newQuote')
 
 const waitForFetch = () => {
-
   loadingIcon.style.setProperty('background-color', getRandomColor())
 
   animate.fadeIn(loadingIcon, transitionTime)

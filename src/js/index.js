@@ -42,7 +42,7 @@ const waitForFetch = () => {
       animate.fadeIn(state.quote, transitionTime)
       setTimeout(() => {
         newQuoteBtn.onclick = refresh
-      })
+      }, transitionTime)
     }
   }, transitionTime * 2)
 }
@@ -58,8 +58,6 @@ const init = () => {
 init()
 
 const refresh = () => {
-  console.log('click')
-
   newQuoteBtn.onclick = null
 
   animate.fadeOut(state.quote, transitionTime)

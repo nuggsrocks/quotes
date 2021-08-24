@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
+  ignorePatterns: ['node_modules', 'dist'],
   rules: {
   }
 }
